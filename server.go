@@ -4,7 +4,11 @@ import "net"
 import "fmt"
 import "bufio"
 import "io/ioutil"
-import "strings" // only needed below for sample processing
+import (
+	"strings"
+	"strconv"
+	"math/rand"
+) // only needed below for sample processing
 
 func main() {
 
@@ -19,8 +23,10 @@ func main() {
 
     fmt.Println(str) // print the content as a 'string'
 	// listen on all interfaces
+	rand := strconv.Itoa(rand.Intn(10000000000))
 	ln, _ := net.Listen("tcp", ":6969")
 	ln.Addr().Network()
+	fmt.Print("Random:", string(rand))
 
 	// accept connection on port
 	conn, _ := ln.Accept()
