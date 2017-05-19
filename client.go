@@ -26,8 +26,9 @@ func main() {
 	h := sha1.New()
 	io.WriteString(h, user)
 	io.WriteString(h, password)
+	io.WriteString(h, mess)
 	auth := (string(h.Sum(nil)))
-	fmt.Fprintf(conn, auth)
+	fmt.Fprintf(conn, user+":"+auth)
 
 	//for {
 	//	reader := bufio.NewReader(os.Stdin)
