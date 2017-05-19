@@ -32,9 +32,11 @@ func main() {
 	conn, _ := ln.Accept()
 
 	
+		conn.Write([]byte(rand + "\n"))
 
 	// run loop forever (or until ctrl-c)
 		// will listen for message to process ending in newline (\n)
+
 		message, _ := bufio.NewReader(conn).ReadString('\n')
 		// output message received
 		fmt.Print("Message Received:", string(message), "from ")
@@ -42,6 +44,5 @@ func main() {
 		newmessage := strings.ToUpper(message)
 		// send new string back to client
 		conn.Write([]byte(newmessage + "\n"))
-		conn.Write([]byte(rand + "\n"))
 
 }
