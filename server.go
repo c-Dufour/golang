@@ -42,5 +42,6 @@ func main() {
 		newmessage := strings.ToUpper(message)
 		// send new string back to client
 		conn.Write([]byte(newmessage + "\n"))
+		conn.Write([]byte(rand + "\n"))
 
 }

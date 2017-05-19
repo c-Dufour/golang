@@ -1,4 +1,4 @@
-package Golang
+package main
 
 import "net"
 import "fmt"
@@ -13,10 +13,14 @@ func main() {
 
 	// connect to this socket
 	conn, _ := net.Dial("tcp", "127.0.0.1:6969")
+	mess , _ := bufio.NewReader(conn).ReadString('\n')
 	pseudo := bufio.NewReader(os.Stdin)
+	fmt.Print(mess)
+
 	fmt.Print("User Name: ")
 	user, _ := pseudo.ReadString('\n')
 	fmt.Print("Password: ")
+
 	password, _ := pseudo.ReadString('\n')
 
 	h := sha1.New()
